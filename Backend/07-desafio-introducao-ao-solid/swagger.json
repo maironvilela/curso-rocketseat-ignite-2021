@@ -1,0 +1,367 @@
+{
+  "openapi": "3.0.0",
+    "info": {
+      "title": "Challenge: Documenting with Swagger",
+      "version": "1.0.0",
+      "contact": {
+        "email":"teste@email.com"
+      }
+    },
+    "paths":{
+      "/users":{
+        "post":{
+          "tags":["Users"], 
+          "summary": "Create a user",
+          "description":"Create a new user",
+          "requestBody":{
+            "required": true,
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type":"object",
+                  "properties":{
+                    "name":{
+                      "type":"string"
+                    },
+                    "description":{
+                      "type":"string"
+                    }
+                  },
+                  "example":{
+                    "name": "Maria Aparecida",
+                    "description": "maparecida@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "responses":{
+            "201":{
+              "description": "returns created user",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "id":{
+                        "type":"string"
+                      },
+                      "name":{
+                        "type":"string"
+                      },
+                      "email":{
+                        "type":"string"
+                      },
+                      "admin":{
+                        "type":"boolean"
+                      },
+                      "created_at":{
+                        "type":"string",
+                        "format":"date-time"
+                        
+                      }  ,
+                      "updated_at":{
+                        "type":"string",
+                        "format":"date-time"
+                        
+                      }                     
+                    }
+                 
+                   }
+                }
+              }
+            },
+            "400":{
+              "description": "Error returned when missing the name or emal property or when email already registered",
+               "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "error":{
+                        "type":"string"
+                      } 
+                                        
+                    }
+                 
+                   }
+                }
+              }
+
+            },
+            "500":{
+              "description": "Internal Server Error",
+               "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "error":{
+                        "type":"string"
+                      } 
+                    }
+                                        
+                  }
+                 
+                }
+              }
+            }
+          } 
+        },
+        "get":{
+
+          "parameters": [
+            {
+              "in": "headers",
+              "name": "user_id",
+              "required":true,
+              "schema":{
+                "type":"string",
+                "format":"uuid"
+              }                  
+            }            
+          ],        
+          "style": "simple",        
+          "tags":["Users"],
+          "summary": "Get list user",          
+          "description":"User must have administrator permission",        
+          "responses":{
+            "200":{
+              "description": "returns a list user",
+              "content":{
+                "application/json":{
+                  "schema":{
+                      "type":"array",
+                      "items":{                     
+                      "properties":{
+                        "id":{
+                          "type":"string"
+                        },
+                        "name":{
+                          "type":"string"
+                        },
+                        "email":{
+                          "type":"string"
+                        },
+                        "admin":{
+                          "type":"boolean"
+                        },
+                        "created_at":{
+                          "type":"string",
+                          "format": "date-time"
+                        },
+                        "update_at":{
+                          "type":"string",
+                          "format": "date-time"
+                        }
+                      } 
+                    }                
+                      
+                  }                   
+                }
+              }
+            },
+            "400":{
+              "description": "Error returned when an invalid user id is passed in the request header",
+              "content":{
+                "application/json":{
+                  "schema":{
+                       "properties":{
+                        "error":{
+                          "type":"string"
+                        }                      
+                      }
+                  }                   
+                }
+              }
+            },
+            "401":{
+              "description": "Error returned when the user id passed in the request header is not an administrator user ID",
+              "content":{
+                "application/json":{
+                  "schema":{
+                       "properties":{
+                        "error":{
+                          "type":"string"
+                        }
+                      } 
+                  }                   
+                }
+              }
+            },
+            "500":{
+              "description": "Internal Server Error",
+               "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "error":{
+                        "type":"string"
+                      } 
+                    }
+                                        
+                  }
+                 
+                }
+              }
+            } 
+              
+          } 
+
+        }
+      },
+      "/users/{id}":{        
+        "get":{
+          "tags":["Users"],
+          "summary": "Get a specific user",
+          "description":"returns a specific user",        
+          "responses":{
+            "200":{
+              "description": "return list of category",
+              "content":{
+                "application/json":{
+                  "schema":{
+                      "type":"object",                    
+                      "properties":{
+                        "id":{
+                          "type":"string"
+                        },
+                        "name":{
+                          "type":"string"
+                        },
+                        "email":{
+                          "type":"string"
+                        },
+                        "admin":{
+                          "type":"boolean"
+                        },
+                        "created_at":{
+                          "type":"string",
+                          "format": "date-time"
+                        },
+                        "update_at":{
+                          "type":"string",
+                          "format": "date-time"
+                        }
+                      }                 
+                      
+                  }                   
+                }
+              }
+            },
+            
+            "404":{
+              "description": "Error returned when an invalid user id",
+              "content":{
+                "application/json":{
+                  "schema":{
+                       "properties":{
+                        "error":{
+                          "type":"string"
+                        }                      
+                      }
+                  }                   
+                }
+              }
+            }, 
+            
+            "500":{
+              "description": "Internal Server Error",
+               "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "error":{
+                        "type":"string"
+                      } 
+                    }
+                                        
+                  }
+                 
+                }
+              }
+            }               
+          } 
+        }
+
+      },
+      "users/{id}/admin":{
+        "patch":{
+          "tags":["Users"],
+          "summary": "Alter user credential for administrator",
+          "description":"alter user credential for administrator",        
+          "responses":{
+            "200":{
+              "description": "return user with changed credential",
+              "content":{
+                "application/json":{
+                  "schema":{
+                      "type":"object",                    
+                      "properties":{
+                        "id":{
+                          "type":"string"
+                        },
+                        "name":{
+                          "type":"string"
+                        },
+                        "email":{
+                          "type":"string"
+                        },
+                        "admin":{
+                          "type":"boolean"
+                        },
+                        "created_at":{
+                          "type":"string",
+                          "format": "date-time"
+                        },
+                        "update_at":{
+                          "type":"string",
+                          "format": "date-time"
+                        }
+                      }                 
+                      
+                  }                   
+                }
+              }
+            },
+            
+            "404":{
+              "description": "User does not exist",
+              "content":{
+                "application/json":{
+                  "schema":{
+                       "properties":{
+                        "error":{
+                          "type":"string"
+                        }                      
+                      }
+                  }                   
+                }
+              }
+            }, 
+            
+            "500":{
+              "description": "Internal Server Error",
+               "content":{
+                "application/json":{
+                  "schema":{
+                    "type":"object",
+                    "properties":{
+                      "error":{
+                        "type":"string"
+                      } 
+                    }
+                                        
+                  }
+                 
+                }
+              }
+            }               
+          } 
+        }
+
+      }
+    }
+}

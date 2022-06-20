@@ -1,0 +1,65 @@
+.content{
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  .welcome{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 60rem;
+    padding: 1rem;
+
+    > p{
+      font-size:2.4rem;
+      line-height:3.4rem;
+      color: var(--gray-100);
+      span{
+        font-weight: 900;
+      }
+    }
+
+    h1{
+      font-size:7.2rem;
+      line-height:7.2rem;
+      color: var(--gray-100);
+      font-weight: 900;
+      padding-top: 6rem;
+
+    }
+
+    .amount_info{
+      margin-top:4rem;
+      font-size: 2.4rem;
+
+      span{
+        display: block;
+        color:var(--cyan-500)
+      }
+
+    }
+
+
+  }
+
+  .image{
+    margin-top: 8rem;
+    display: flex;
+    flex: 1;
+    align-items:flex-start;
+    justify-items: flex-start;
+
+    img{
+       width: 33rem;
+      height: 40rem;
+    }
+  }
+
+  button{
+    position: relative;
+    width: 50%;
+
+
+  }
+}
+
+

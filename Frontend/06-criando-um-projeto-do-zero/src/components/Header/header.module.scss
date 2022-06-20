@@ -1,0 +1,19 @@
+.header{
+  height: 15vh;
+  width: 100vw;
+  background: var(--Background);
+  padding-bottom: rem;
+
+}
+
+.container{
+   width: 100vw;
+   padding-top: 2rem;
+   max-width: 70rem;
+   margin: 0 auto;
+
+  img{
+    width: 23.8rem;
+    height: 2.5rem;
+  }
+}

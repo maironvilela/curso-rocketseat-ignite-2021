@@ -1,0 +1,18 @@
+.banner{
+ img{
+    width:100vw;
+    height: 50rem;
+   }
+ }
+
+ @media only screen and (max-width: 720px) {
+  .banner{
+    img{
+       width:100vw;
+       height: 20rem;
+      }
+    }
+
+}
+
+

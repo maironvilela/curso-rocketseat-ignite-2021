@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+  html {
+    /* A cada 1rem será considera 10px */
+    font-size: 62.5%;
+    overflow-x: hidden;
+    body {
+      background:var(--white);
+      width: 100vw;
+    }
+
+
+
+  body, input, textarea, select, button {
+    font-weight: 400;
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  }
+
+
+
